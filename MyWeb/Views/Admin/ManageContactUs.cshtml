@@ -1,0 +1,46 @@
+﻿@model IEnumerable<MyWeb.Models.Domain.tbl_ContactUs>
+
+@{
+    ViewBag.Title = "ManageContactUs";
+    Layout = "~/Views/Shared/_Admin.cshtml";
+}
+
+<div class="left">
+
+
+    <h2>مدیریت ارتباط با ما</h2>
+    <table class="table">
+        <tr>
+            <th>
+                نام
+            </th>
+            <th>
+                ایمیل
+            </th>
+            @*<th>
+                    @Html.DisplayNameFor(model => model.Text)
+                </th>*@
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                @*<td>
+                        @Html.DisplayFor(modelItem => item.Text)
+                    </td>*@
+                <td>
+                    @Html.ActionLink("جزئیات", "DetailsContactUs", new { id = item.ID }) |
+                    @Html.ActionLink("حذف", "DeleteContactUs", new { id = item.ID })
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>

@@ -1,0 +1,84 @@
+﻿@model IEnumerable<MyWeb.Models.Domain.tbl_Advertising>
+
+@{
+    ViewBag.Title = "ManageAdvertising";
+    Layout = "~/Views/Shared/_Admin.cshtml";
+}
+
+<div class="left">
+
+
+    <h2>مدیریت تلیغات</h2>
+
+    <p>
+        @Html.ActionLink("افزدون", "CreateAdvertising")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Title)
+            </th>
+            @*<th>
+                    @Html.DisplayNameFor(model => model.Description)
+                </th>*@
+            <th>
+                تصویر
+            </th>
+            @*<th>
+                    @Html.DisplayNameFor(model => model.Link)
+                </th>*@
+            @*<th>
+                    @Html.DisplayNameFor(model => model.Date)
+                </th>*@
+            @*<th>
+                    @Html.DisplayNameFor(model => model.DataStart)
+                </th>*@
+            @*<th>
+                    @Html.DisplayNameFor(model => model.DataEnd)
+                </th>*@
+            @*<th>
+                    @Html.DisplayNameFor(model => model.Enable)
+                </th>*@
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            string style = "";
+            if (item.Enable == false)
+            { style = "background-color:red;"; }
+            <tr>
+                <td style="@style">
+                    @Html.DisplayFor(modelItem => item.Title)
+                </td>
+                @*<td>
+                        @Html.DisplayFor(modelItem => item.Description)
+                    </td>*@
+                <td>
+                    <a href="@item.Link"><img src="@item.Image" /></a>
+                </td>
+                @*<td>
+                        @Html.DisplayFor(modelItem => item.Link)
+                    </td>*@
+                @*<td>
+                        @Html.DisplayFor(modelItem => item.Date)
+                    </td>*@
+                @*<td>
+                        @Html.DisplayFor(modelItem => item.DataStart)
+                    </td>*@
+                @*<td>
+                        @Html.DisplayFor(modelItem => item.DataEnd)
+                    </td>*@
+                <td>
+                    @Html.DisplayFor(modelItem => item.Enable)
+                </td>
+                <td>
+                    @Html.ActionLink("ویرایش", "EditAdvertising", new { id = item.ID }) |
+                    @Html.ActionLink("جزئیات", "DetailsAdvertising", new { id = item.ID }) |
+                    @Html.ActionLink("حذف", "DeleteAdvertising", new { id = item.ID })
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>

@@ -1,0 +1,166 @@
+﻿@model MyWeb.Models.Domain.tbl_Subject
+
+@{
+    ViewBag.Title = "Subject";
+    Layout = "~/Views/Shared/_Index.cshtml";
+    MyWeb.Models.Repository.Rep_Comments RComment = new MyWeb.Models.Repository.Rep_Comments();
+    MyWeb.Models.Utility.ConvertDateToPersianCalendar Persian = new MyWeb.Models.Utility.ConvertDateToPersianCalendar();
+}
+
+<div class="left">
+
+    <div class="TitleSubject">
+        @Html.DisplayFor(model => model.Title)
+    </div>
+
+    <div class="ImageSubject">
+        <img src="~/Content/Images/Subject/@Html.DisplayFor(model=>model.Image)" />
+    </div>
+
+    <div class="FullTextSubject">
+        <p>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            @Html.Raw(Model.FullText)
+        </p>
+        <div class="FullTextSubject-Footer">
+            <table>
+                <tr style="color:green">
+                    <td>پسندیدم :</td>
+                    <td><span id="Like">@Html.DisplayFor(model => model.Like)</span></td>
+                    <td>@Ajax.ActionLink("+", "SubjectLike", new { ID = Model.ID }, new AjaxOptions { HttpMethod = "POST", UpdateTargetId = "Like" })</td>
+                </tr>
+                <tr class="DisLike">
+                    <td>نپسندیدم :</td>
+                    <td><span id="DisLike">@Html.DisplayFor((model => model.DisLike))</span></td>
+                    <td>@Ajax.ActionLink("+", "SubjectDisLike", new { ID = Model.ID }, new AjaxOptions { HttpMethod = "POST", UpdateTargetId = "DisLike" })</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <div class="BoxSubject">
+        <div class="DesBox">
+            جعبه توضیحات
+        </div>
+        <p>تاریخ و زمان انتشار: @Persian.ConvertToPersian(Model.Date).ToShortDateString()</p>
+        <p>تعداد بازدید: @Html.DisplayFor(model => model.Visit)</p>
+        <p>نام مدرس : @Html.DisplayFor(model => model.Username)</p>
+        <p>نوع مطلب : @Html.DisplayFor(model => model.Type)</p>
+        <p class="linkdownload"><a href="@Html.DisplayFor(model=>model.Video)">لینک دانلود</a></p>
+    </div>
+
+    @{
+        int counter = 0;
+        foreach (var item in RComment.GetComment(Model.ID).Where(a => a.ParentID.Equals(0)))
+        {
+            counter++;
+            <div class="comment">
+                <p>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    @item.Name میگه:
+                </p>
+                <p>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    @item.Text
+                </p>
+                <p>
+                    @Persian.ConvertToPersian(item.Date).ToShortDateString()
+                </p>
+                <div class="FullTextSubject-Footer">
+                    <table>
+                        <tr style="color:green">
+                            <td>پسندیدم :</td>
+                            <td><span id="Like@(counter)">@item.Like</span></td>
+                            <td>@Ajax.ActionLink("+", "CommentLike", new { id = item.ID }, new AjaxOptions { HttpMethod = "POST", UpdateTargetId = "Like" + counter })</td>
+                        </tr>
+                        <tr class="DisLike">
+                            <td>نپسندیدم :</td>
+                            <td><span id="DisLike@(counter)">@item.DisLike</span></td>
+                            <td>@Ajax.ActionLink("+", "CommentDisLike", new { id = item.ID }, new AjaxOptions { HttpMethod = "POST", UpdateTargetId = "DisLike" + counter })</td>
+                        </tr>
+                    </table>
+                </div>
+
+                @{
+            foreach (var itemReplay in RComment.GetComment(Model.ID).Where(a => a.ParentID.Equals(item.ID)))
+            {
+                counter++;
+                <div class="ReplyComment">
+                    <p>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        @itemReplay.Name میگه:
+                    </p>
+                    <p>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        @itemReplay.Text
+                    </p>
+                    <p>
+                        @Persian.ConvertToPersian(itemReplay.Date).ToShortDateString()
+                    </p>
+                    <div class="FullTextSubject-Footer">
+                        <table>
+                            <tr style="color:green">
+                                <td>پسندیدم :</td>
+                                <td><span id="Like@(counter)">@itemReplay.Like</span></td>
+                                <td>@Ajax.ActionLink("+", "CommentLike", new { id = itemReplay.ID }, new AjaxOptions { HttpMethod = "POST", UpdateTargetId = "Like" + counter })</td>
+                            </tr>
+                            <tr class="DisLike">
+                                <td>نپسندیدم :</td>
+                                <td><span id="DisLike@(counter)">@itemReplay.DisLike</span></td>
+                                <td>@Ajax.ActionLink("+", "CommentDisLike", new { id = itemReplay.ID }, new AjaxOptions { HttpMethod = "POST", UpdateTargetId = "DisLike" + counter })</td>
+                            </tr>
+                        </table>
+                    </div>
+
+                </div>
+
+            }
+                }
+                @Ajax.ActionLink("پاسخ", "CommentReplay", new { ParentID = item.ID, SubjectID = Model.ID }, new AjaxOptions { HttpMethod = "POST", UpdateTargetId = "CommentReplay" + counter, LoadingElementId = "Loading" + counter }, new { style = "margin-right:90%;height: 32px;border:1px solid #707070;width:40px;border-radius:6px;padding:2px 12px;background-color:#dddddd;color:#000000;" })
+                <div style="background-color:yellow;width:400px;border:1px red;margin-right:10%;border-radius:10px;">
+                    <div id="Loading@(counter)" style="display:none">لطفا صبور باشید...</div>
+                    <div id="CommentReplay@(counter)"></div>
+                </div>
+
+            </div>
+        }
+    }
+
+
+    <div>
+        @using (Html.BeginForm("InsertComment", "Home", FormMethod.Get))
+        {
+            <div style="@ViewBag.Style">
+                @ViewBag.Message
+            </div>
+
+            <input type="hidden" name="SubjectID" value="@Model.ID" />
+            <table>
+                <tr>
+                    <td>نام</td>
+                    <td><input type="text" name="Name" value="" /></td>
+                </tr>
+                <tr>
+                    <td>ایمیل</td>
+                    <td><input type="text" name="Email" value="" /></td>
+                </tr>
+                <tr>
+                    <td>نظر</td>
+                    <td><textarea name="Text"></textarea></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td><input type="submit" value="ارسال نظر" /></td>
+                </tr>
+            </table>
+        }
+    </div>
+
+
+
+
+
+    <div>
+        <dl class="dl-horizontal"></dl>
+    </div>
+</div>

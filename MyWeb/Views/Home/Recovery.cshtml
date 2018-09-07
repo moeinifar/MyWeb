@@ -1,0 +1,29 @@
+﻿@{
+    ViewBag.Title = "Recovery";
+    Layout = "~/Views/Shared/_Index.cshtml";
+}
+<div class="left">
+
+    <h2>بازیابی کلمه عبور</h2>
+
+    <div>
+        @using (Html.BeginForm("Recovery","Home",FormMethod.Post))
+        {
+            <table>
+                <tr>
+                    <td>نام کاربری :</td>
+                    <td><input type="text" name="txt_UserName" value="" /></td>
+                </tr>
+                <tr>
+                    <td>ایمیل :</td>
+                    <td><input type="text" name="txt_Email" value="" /></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td><input type="submit" value="بازیابی" /></td>
+                </tr>
+            </table>
+        }
+    </div>
+
+</div>

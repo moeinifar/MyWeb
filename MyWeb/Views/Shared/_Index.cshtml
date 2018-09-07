@@ -1,0 +1,78 @@
+﻿@{
+    Layout = null;
+}
+
+
+@{
+    MyWeb.Models.Repository.Rep_Setting RepSetting = new MyWeb.Models.Repository.Rep_Setting();
+}
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@RepSetting.tools().Title - @ViewBag.Title</title>
+    <meta name="keywords" content="@RepSetting.tools().MetaTag" />
+
+    @{
+        foreach (var item in RepSetting.tools().MetaTag.Split(new char[] { '،' }))
+        {
+            <meta name="keywords" content="@item" />
+        }
+    }
+
+    <meta name="description" content="@RepSetting.tools().Description" />
+    <link href="~/Content/StyleSheet.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-2.1.4.min.js"></script>
+    <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+</head>
+<body>
+    <div class="homepage">
+        <div class="logo">
+            <h1>EducationCode</h1>
+            <h2>کد آموز</h2>
+        </div>
+
+
+        <div class="menu">
+            <div class="BoxSearch">
+                <form action="/Home/Search" method="get">
+                    <input type="text" name="txtSearch" value="بگرد..." onfocus="if(this.value=='بگرد...')this.value=''" onblur="if(this.value=='')this.value='بگرد...'" />
+                    <button type="submit">بگرد</button>
+                </form>
+            </div>
+            <div class="menu-menu">
+
+                <ul>
+                    <li><a href="/Home/ContactUs">ارتباط با ما</a></li>
+                    <li><a href="/Home/Login">ورود به سایت</a></li>
+                    <li><a href="/Home/Register">ثبت نام</a></li>
+                    <li><a href="/Home">صفحه اصلی</a></li>
+                </ul>
+            </div>
+        </div>
+
+
+
+        <div class="container">
+            <div class="main">
+                <div class="banner">
+                    <img src="~/Content/Images/pics01.jpg" />
+                </div>
+
+
+                <div class="rows">
+                    @Html.Partial("P_Right")
+
+                    @RenderBody()
+
+                </div>
+            </div>
+        </div>
+        <div class="footer">
+            تمامي حقوق مادي و معنوي اين وب سايت نزد EducationCode.ir محفوظ بوده و هر گونه کپي برداري از مطالب بدون ذکر منبع پيگرد قانوني به همراه دارد!
+        </div>
+    </div>
+
+</body>
+</html>

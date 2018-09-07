@@ -1,0 +1,61 @@
+﻿@{
+    MyWeb.Models.Repository.Rep_Advertising RAdv = new MyWeb.Models.Repository.Rep_Advertising();
+}
+@using CaptchaMvc;
+@using CaptchaMvc.HtmlHelpers;
+
+
+<div class="right">
+
+    <div class="advertising">
+        @{
+            foreach (var item in RAdv.GetAds())
+            {
+                <div>
+                    <a href="@item.Link"><img src="@item.Image" alt="@item.Title" title="@item.Description" /></a>
+                </div>
+
+            }
+        }
+    </div>
+    <div class="divlist">
+        <h4 class="container-subject-title">دسته بندی</h4>
+        <ul class="list">
+            @AddMenu()
+        </ul>
+    </div>
+</div>
+
+@helper AddMenu(int ParentID = 1)
+{
+    MyWeb.Models.Repository.Rep_Grouping RGroup = new MyWeb.Models.Repository.Rep_Grouping();
+
+    foreach (var item in RGroup.GetGrouping().Where(a => a.ParentID.Equals(1)))
+    {
+        <li>
+            <a href="/Home/Grouping/@item.ID">@item.Title</a>
+            @AddChild(item.ID)
+        </li>
+    }
+}
+
+
+
+@helper AddChild(int ParentID)
+{
+    MyWeb.Models.Repository.Rep_Grouping RGroup = new MyWeb.Models.Repository.Rep_Grouping();
+    if (RGroup.GetGrouping().Where(a => a.ParentID.Equals(ParentID)).Count() > 0)
+    {
+        <div>
+            <ul>
+                @foreach (var item in RGroup.GetGrouping().Where(a => a.ParentID.Equals(ParentID)).OrderBy(a => a.ParentID))
+                {
+                    <li>
+                        <a href="/Home/Grouping/@item.ID">@item.Title</a>
+                        @Html.Raw(HttpUtility.HtmlDecode(AddChild(item.ID).ToString()))
+                    </li>
+                }
+            </ul>
+        </div>
+    }
+}

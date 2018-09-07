@@ -1,0 +1,57 @@
+﻿@model List<MyWeb.Models.Domain.tbl_Subject>
+
+@using PagedList;
+@using PagedList.Mvc;
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Index.cshtml";
+}
+
+<div class="left">
+
+    @{
+        foreach (var item in Model)
+        {
+
+            <div class="container-left">
+                <div class="container-subject-title">
+                    <a href="/home/Subject/@item.ID">@item.Title</a>
+                </div>
+                <img src="~/Content/Images/Subject/@item.Image" />
+                <div class="container-left-text">
+                    @{
+            if (item.Text.Count() == 500)
+            {
+                <p>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    @item.Text ...
+                </p>
+            }
+            else
+            {
+                <p>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    @item.Text
+                </p>
+            }
+                    }
+
+                </div>
+                <div class="container-left-footer">
+                    <div>نویسنده:&nbsp;@item.Username</div>
+                    <div>تعداد بازدید:&nbsp;@item.Visit</div>
+                    <div><a href="/home/Subject/@item.ID">ادامه مطلب</a></div>
+                </div>
+            </div>
+        }
+    }
+    @{
+        if (ViewBag.OnePageOfProducts != null)
+        {
+            <div class="PageList" style="direction:ltr;">
+                @Html.PagedListPager((IPagedList)ViewBag.OnePageOfProducts, page => Url.Action("Index", new { page }))
+            </div>
+        }
+    }
+</div>

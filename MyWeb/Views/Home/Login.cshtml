@@ -1,0 +1,41 @@
+﻿@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_Index.cshtml";
+}
+@using CaptchaMvc;
+@using CaptchaMvc.HtmlHelpers;
+<div class="left">
+
+    <h2>صفحه ورود</h2>
+
+    <div>
+        @using (Html.BeginForm("Login", "Home", FormMethod.Post))
+        {
+            <table>
+                <tr>
+                    <td>نام کاربری :</td>
+                    <td><input type="text" name="txt_UserName" value="" /></td>
+                </tr>
+                <tr>
+                    <td>کلمه عبور :</td>
+                    <td><input type="password" name="txt_Password" value="" /></td>
+                </tr>
+                <tr>
+                    <td>کد امنیتی :</td>
+                    <td>@Html.Captcha("تغییر تصویر", "", 6)</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>
+                        <button type="submit">ورود</button>
+                        @Html.ActionLink("بازیابی کلمه عبور", "Recovery", "Home")
+                    </td>
+                </tr>
+            </table>
+            <div style="@ViewBag.Style">
+                @ViewBag.Message
+            </div>
+        }
+    </div>
+
+</div>

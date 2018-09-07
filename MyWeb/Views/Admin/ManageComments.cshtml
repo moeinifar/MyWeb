@@ -1,0 +1,77 @@
+﻿@model IEnumerable<MyWeb.Models.Domain.tbl_Comments>
+
+@{
+    ViewBag.Title = "ManageComments";
+    Layout = "~/Views/Shared/_Admin.cshtml";
+}
+
+@{
+    MyWeb.Models.Utility.ConvertDateToPersianCalendar ConvertDateToPersianCalendar = new MyWeb.Models.Utility.ConvertDateToPersianCalendar();
+}
+<div class="left">
+
+    <h2>مدیریت نظرات</h2>
+
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Family)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            @*<th>
+                    @Html.DisplayNameFor(model => model.Text)
+                </th>*@
+            <th>
+                @Html.DisplayNameFor(model => model.IP)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Date)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            string style = "";
+            if (item.Read == false)
+            { style += "font-weight:700;"; }
+            if (item.Confirm == false)
+            { style += "background-color:red;"; }
+            <tr style="@style">
+                <td>
+                    @Html.DisplayFor(modelItem => item.Title)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Family)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                @*<td>
+                        @Html.DisplayFor(modelItem => item.Text)
+                    </td>*@
+                <td>
+                    @Html.DisplayFor(modelItem => item.IP)
+                </td>
+                <td>
+                    @ConvertDateToPersianCalendar.ConvertToPersian(item.Date).ToShortDateString()
+                </td>
+                <td>
+                    @Html.ActionLink("مشخصات", "DetailsComment", new { id = item.ID }) |
+                </td>
+            </tr>
+        }
+    </table>
+    @Html.ActionLink("برگشت", "ManageSubject") |
+</div>

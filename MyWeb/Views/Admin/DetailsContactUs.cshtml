@@ -1,0 +1,45 @@
+﻿@model MyWeb.Models.Domain.tbl_ContactUs
+
+@{
+    ViewBag.Title = "DetailsContactUs";
+    Layout = "~/Views/Shared/_Admin.cshtml";
+}
+
+<div class="left">
+
+
+    <h2>جزئیات ارتباط</h2>
+
+    <div>
+        <dl class="dl-horizontal">
+            <dt>
+                نام
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Name)
+            </dd>
+
+            <dt>
+                ایمیل
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Email)
+            </dd>
+
+            <dt>
+                متن
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Text)
+            </dd>
+
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("برگشت", "ManageContactUs")
+    </p>
+
+</div>

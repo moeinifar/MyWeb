@@ -1,0 +1,64 @@
+﻿@model IEnumerable<MyWeb.Models.Domain.tbl_Grouping>
+
+@{
+    ViewBag.Title = "ManageGrouping";
+    Layout = "~/Views/Shared/_Admin.cshtml";
+}
+@{
+    MyWeb.Models.Domain.DB_MyWebEntities db = new MyWeb.Models.Domain.DB_MyWebEntities();
+}
+
+<div class="left">
+
+    <h2>مدیریت دسته بندی ها</h2>
+
+    @*<p>
+            @Html.ActionLink("افزودن", "CreateGrouping")
+        </p>*@
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Image)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ParentID)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    <img style="height:50px;width:50px" src="~/Content/Images/Grouping/@item.Image" />
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.Title)
+                </td>
+                <td>
+                    @{
+            var q = (from a in db.tbl_Grouping
+                     where a.ID.Equals(item.ParentID)
+                     select a).SingleOrDefault();
+                    }
+
+                    @q.Title
+
+                </td>
+                <td>
+                    @Html.ActionLink("ویرایش", "EditGrouping", new { id = item.ID }) |
+                    @Html.ActionLink("حذف", "DeleteGrouping", new { id = item.ID }) |
+                    @Html.ActionLink("افزودن", "CreateGrouping", new { id = item.ID })
+                </td>
+            </tr>
+        }
+
+    </table>
+
+
+</div>

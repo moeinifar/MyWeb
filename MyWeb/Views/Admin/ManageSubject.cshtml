@@ -1,0 +1,119 @@
+﻿@model IEnumerable<MyWeb.Models.Domain.tbl_Subject>
+
+@{
+    ViewBag.Title = "ManageSubject";
+    Layout = "~/Views/Shared/_Admin.cshtml";
+    MyWeb.Models.Utility.ConvertDateToPersianCalendar ConvertDateToPersian = new MyWeb.Models.Utility.ConvertDateToPersianCalendar();
+}
+
+<div class="left">
+
+
+    <h2>مدیریت مطالب</h2>
+
+    <p>
+        @Html.ActionLink("مطلب جدید", "CreateSubject")
+    </p>
+    <table class="table">
+        <tr>
+            @*<th>
+                    @Html.DisplayNameFor(model => model.HeadTitle)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Text)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.FullText)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Image)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Video)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Visit)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Like)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.DisLike)
+                </th>*@
+            @{
+                if (Session["Access"].ToString() == "Admin")
+                {
+                    <th>
+                        @Html.DisplayNameFor(model => model.Username)
+                    </th>
+                }
+            }
+            <th>
+                @Html.DisplayNameFor(model => model.Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Date)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Type)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+
+                @*<td>
+                        @Html.DisplayFor(modelItem => item.HeadTitle)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Text)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FullText)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Image)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Video)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Visit)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Like)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DisLike)
+                    </td>*@
+                @{
+            if (Session["Access"].ToString() == "Admin")
+            {
+                <td>
+                    @Html.DisplayFor(modelItem => item.Username)
+                </td>
+            }
+                }
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.Title)
+                </td>
+                <td>
+                    @ConvertDateToPersian.ConvertToPersian(item.Date).ToShortDateString()
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Type)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "EditSubject", new { id = item.ID }) |
+                    @Html.ActionLink("Details", "Subject", "Home", new { id = item.ID }, new { style = "" }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.ID }) |
+                    @Html.ActionLink("Comments", "ManageComments", new { id = item.ID })
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>

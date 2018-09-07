@@ -1,0 +1,133 @@
+﻿@model MyWeb.Models.Domain.tbl_Users
+
+@{
+    ViewBag.Title = "DetailsUser";
+    Layout = "~/Views/Shared/_Admin.cshtml";
+}
+
+<div class="left">
+
+
+    <h2>جزئیات کاربر</h2>
+
+    <div>
+
+        <table class="dl-horizontal">
+
+            <tr>
+                <td>
+                    @Html.DisplayNameFor(model => model.Image)
+                </td>
+
+                <td>
+                    <img style="height:100px;width:75px;" src="~/Content/Images/Users/@Html.DisplayFor(model => model.Image)" />
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    @Html.DisplayNameFor(model => model.Username)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(model => model.Username)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.DisplayNameFor(model => model.Password)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(model => model.Password)
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    @Html.DisplayNameFor(model => model.Email)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(model => model.Email)
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    @Html.DisplayNameFor(model => model.Access)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(model => model.Access)
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    @Html.DisplayNameFor(model => model.Description)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(model => model.Description)
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    @Html.DisplayNameFor(model => model.Name)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(model => model.Name)
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    @Html.DisplayNameFor(model => model.Family)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(model => model.Family)
+                </td>
+            </tr>
+
+
+
+            <tr>
+                <td>
+                    @Html.DisplayNameFor(model => model.MeliCode)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(model => model.MeliCode)
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    @Html.DisplayNameFor(model => model.MobilNumber)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(model => model.MobilNumber)
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    @Html.DisplayNameFor(model => model.Enable)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(model => model.Enable)
+                </td>
+            </tr>
+
+        </table>
+    </div>
+    <p>
+        @Html.ActionLink("برگشت", "ManageUsers")
+    </p>
+</div>

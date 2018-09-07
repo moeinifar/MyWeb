@@ -1,0 +1,573 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="DB_MyWebModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="tbl_Advertising">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="Image" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="Link" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="Date" Type="date" Nullable="false" />
+          <Property Name="DataStart" Type="date" Nullable="false" />
+          <Property Name="DataEnd" Type="date" Nullable="false" />
+          <Property Name="Enable" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbl_Comments">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SubjectID" Type="int" Nullable="false" />
+          <Property Name="ParentID" Type="int" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="Family" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="Text" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="IP" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="Date" Type="date" Nullable="false" />
+          <Property Name="Confirm" Type="bit" Nullable="false" />
+          <Property Name="Read" Type="bit" Nullable="false" />
+          <Property Name="Like" Type="int" Nullable="false" />
+          <Property Name="DisLike" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbl_ContactUs">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="Text" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbl_Grouping">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="ParentID" Type="int" Nullable="false" />
+          <Property Name="Image" Type="nvarchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbl_RelationshipGroup&amp;Subject">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="GroupID" Type="int" Nullable="false" />
+          <Property Name="SubjectID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbl_Setting">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="MetaTag" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="ShowConfComm" Type="bit" Nullable="false" />
+          <Property Name="DisableComment" Type="bit" Nullable="false" />
+          <Property Name="MaxUploadSize" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="CountSubjectInPage" Type="int" Nullable="false" />
+          <Property Name="CountOfMemo" Type="int" Nullable="false" />
+          <Property Name="CountNewer" Type="int" Nullable="false" />
+          <Property Name="CountPopular" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbl_Subject">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="HeadTitle" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="Text" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="FullText" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Image" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="Video" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="Username" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Visit" Type="bigint" Nullable="false" />
+          <Property Name="Like" Type="int" Nullable="false" />
+          <Property Name="DisLike" Type="int" Nullable="false" />
+          <Property Name="Date" Type="datetime" Nullable="false" />
+          <Property Name="Type" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbl_Users">
+          <Key>
+            <PropertyRef Name="Username" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Username" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Password" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Access" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Family" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Image" Type="nvarchar" MaxLength="255" />
+          <Property Name="MeliCode" Type="nvarchar" MaxLength="10" />
+          <Property Name="MobilNumber" Type="nvarchar" MaxLength="11" />
+          <Property Name="Enable" Type="bit" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_tbl_Comments_tbl_Subject1">
+          <End Role="tbl_Subject" Type="Self.tbl_Subject" Multiplicity="1" />
+          <End Role="tbl_Comments" Type="Self.tbl_Comments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Subject">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="tbl_Comments">
+              <PropertyRef Name="SubjectID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_Grouping_tbl_Grouping">
+          <End Role="tbl_Grouping" Type="Self.tbl_Grouping" Multiplicity="1" />
+          <End Role="tbl_Grouping1" Type="Self.tbl_Grouping" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Grouping">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="tbl_Grouping1">
+              <PropertyRef Name="ParentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_RelationshipGroup&amp;Subject_tbl_Grouping">
+          <End Role="tbl_Grouping" Type="Self.tbl_Grouping" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tbl_RelationshipGroup&amp;Subject" Type="Self.tbl_RelationshipGroup&amp;Subject" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Grouping">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="tbl_RelationshipGroup&amp;Subject">
+              <PropertyRef Name="GroupID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_RelationshipGroup&amp;Subject_tbl_Subject1">
+          <End Role="tbl_Subject" Type="Self.tbl_Subject" Multiplicity="1" />
+          <End Role="tbl_RelationshipGroup&amp;Subject" Type="Self.tbl_RelationshipGroup&amp;Subject" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Subject">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="tbl_RelationshipGroup&amp;Subject">
+              <PropertyRef Name="SubjectID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_Subject_tbl_Users1">
+          <End Role="tbl_Users" Type="Self.tbl_Users" Multiplicity="1" />
+          <End Role="tbl_Subject" Type="Self.tbl_Subject" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Users">
+              <PropertyRef Name="Username" />
+            </Principal>
+            <Dependent Role="tbl_Subject">
+              <PropertyRef Name="Username" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DB_MyWebModelStoreContainer">
+          <EntitySet Name="tbl_Advertising" EntityType="Self.tbl_Advertising" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_Comments" EntityType="Self.tbl_Comments" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_ContactUs" EntityType="Self.tbl_ContactUs" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_Grouping" EntityType="Self.tbl_Grouping" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_RelationshipGroup&amp;Subject" EntityType="Self.tbl_RelationshipGroup&amp;Subject" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_Setting" EntityType="Self.tbl_Setting" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_Subject" EntityType="Self.tbl_Subject" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_Users" EntityType="Self.tbl_Users" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_tbl_Comments_tbl_Subject1" Association="Self.FK_tbl_Comments_tbl_Subject1">
+            <End Role="tbl_Subject" EntitySet="tbl_Subject" />
+            <End Role="tbl_Comments" EntitySet="tbl_Comments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_Grouping_tbl_Grouping" Association="Self.FK_tbl_Grouping_tbl_Grouping">
+            <End Role="tbl_Grouping" EntitySet="tbl_Grouping" />
+            <End Role="tbl_Grouping1" EntitySet="tbl_Grouping" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_RelationshipGroup&amp;Subject_tbl_Grouping" Association="Self.FK_tbl_RelationshipGroup&amp;Subject_tbl_Grouping">
+            <End Role="tbl_Grouping" EntitySet="tbl_Grouping" />
+            <End Role="tbl_RelationshipGroup&amp;Subject" EntitySet="tbl_RelationshipGroup&amp;Subject" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_RelationshipGroup&amp;Subject_tbl_Subject1" Association="Self.FK_tbl_RelationshipGroup&amp;Subject_tbl_Subject1">
+            <End Role="tbl_Subject" EntitySet="tbl_Subject" />
+            <End Role="tbl_RelationshipGroup&amp;Subject" EntitySet="tbl_RelationshipGroup&amp;Subject" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_Subject_tbl_Users1" Association="Self.FK_tbl_Subject_tbl_Users1">
+            <End Role="tbl_Users" EntitySet="tbl_Users" />
+            <End Role="tbl_Subject" EntitySet="tbl_Subject" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DB_MyWebModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="tbl_Advertising">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Image" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Link" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="DataStart" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="DataEnd" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Enable" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbl_Subject">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="HeadTitle" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Text" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="FullText" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Image" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Video" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Username" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Visit" Type="Int64" Nullable="false" />
+          <Property Name="Like" Type="Int32" Nullable="false" />
+          <Property Name="DisLike" Type="Int32" Nullable="false" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="tbl_Users" Relationship="Self.FK_tbl_Subject_tbl_Users1" FromRole="tbl_Subject" ToRole="tbl_Users" />
+          <NavigationProperty Name="tbl_Comments" Relationship="DB_MyWebModel.FK_tbl_Comments_tbl_Subject1" FromRole="tbl_Subject" ToRole="tbl_Comments" />
+          <NavigationProperty Name="tbl_RelationshipGroup_Subject" Relationship="DB_MyWebModel.FK_tbl_RelationshipGroup_Subject_tbl_Subject1" FromRole="tbl_Subject" ToRole="tbl_RelationshipGroup_Subject" />
+        </EntityType>
+        <EntityType Name="tbl_Users">
+          <Key>
+            <PropertyRef Name="Username" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Username" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Access" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Family" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Image" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="MeliCode" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="MobilNumber" Type="String" MaxLength="11" FixedLength="false" Unicode="true" />
+          <Property Name="Enable" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="tbl_Subject" Relationship="Self.FK_tbl_Subject_tbl_Users1" FromRole="tbl_Users" ToRole="tbl_Subject" />
+        </EntityType>
+        <Association Name="FK_tbl_Subject_tbl_Users1">
+          <End Role="tbl_Users" Type="Self.tbl_Users" Multiplicity="1" />
+          <End Role="tbl_Subject" Type="Self.tbl_Subject" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Users">
+              <PropertyRef Name="Username" />
+            </Principal>
+            <Dependent Role="tbl_Subject">
+              <PropertyRef Name="Username" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DB_MyWebEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="tbl_Advertising" EntityType="Self.tbl_Advertising" />
+          <EntitySet Name="tbl_Subject" EntityType="Self.tbl_Subject" />
+          <EntitySet Name="tbl_Users" EntityType="Self.tbl_Users" />
+          <AssociationSet Name="FK_tbl_Subject_tbl_Users1" Association="Self.FK_tbl_Subject_tbl_Users1">
+            <End Role="tbl_Users" EntitySet="tbl_Users" />
+            <End Role="tbl_Subject" EntitySet="tbl_Subject" />
+          </AssociationSet>
+          <EntitySet Name="tbl_Setting" EntityType="DB_MyWebModel.tbl_Setting" />
+          <EntitySet Name="tbl_Comments" EntityType="DB_MyWebModel.tbl_Comments" />
+          <AssociationSet Name="FK_tbl_Comments_tbl_Subject1" Association="DB_MyWebModel.FK_tbl_Comments_tbl_Subject1">
+            <End Role="tbl_Subject" EntitySet="tbl_Subject" />
+            <End Role="tbl_Comments" EntitySet="tbl_Comments" />
+          </AssociationSet>
+          <EntitySet Name="tbl_ContactUs" EntityType="DB_MyWebModel.tbl_ContactUs" />
+          <EntitySet Name="tbl_Grouping" EntityType="DB_MyWebModel.tbl_Grouping" />
+          <EntitySet Name="tbl_RelationshipGroup_Subject" EntityType="DB_MyWebModel.tbl_RelationshipGroup_Subject" />
+          <AssociationSet Name="FK_tbl_Grouping_tbl_Grouping" Association="DB_MyWebModel.FK_tbl_Grouping_tbl_Grouping">
+            <End Role="tbl_Grouping" EntitySet="tbl_Grouping" />
+            <End Role="tbl_Grouping1" EntitySet="tbl_Grouping" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_RelationshipGroup_Subject_tbl_Grouping" Association="DB_MyWebModel.FK_tbl_RelationshipGroup_Subject_tbl_Grouping">
+            <End Role="tbl_Grouping" EntitySet="tbl_Grouping" />
+            <End Role="tbl_RelationshipGroup_Subject" EntitySet="tbl_RelationshipGroup_Subject" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_RelationshipGroup_Subject_tbl_Subject1" Association="DB_MyWebModel.FK_tbl_RelationshipGroup_Subject_tbl_Subject1">
+            <End Role="tbl_Subject" EntitySet="tbl_Subject" />
+            <End Role="tbl_RelationshipGroup_Subject" EntitySet="tbl_RelationshipGroup_Subject" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="tbl_Setting">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="MetaTag" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="ShowConfComm" Type="Boolean" Nullable="false" />
+          <Property Name="DisableComment" Type="Boolean" Nullable="false" />
+          <Property Name="MaxUploadSize" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="CountSubjectInPage" Type="Int32" Nullable="false" />
+          <Property Name="CountOfMemo" Type="Int32" Nullable="false" />
+          <Property Name="CountNewer" Type="Int32" Nullable="false" />
+          <Property Name="CountPopular" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbl_Comments">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SubjectID" Type="Int32" Nullable="false" />
+          <Property Name="ParentID" Type="Int32" Nullable="false" />
+          <Property Name="Title" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Family" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Text" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="IP" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Confirm" Type="Boolean" Nullable="false" />
+          <Property Name="Read" Type="Boolean" Nullable="false" />
+          <Property Name="Like" Type="Int32" Nullable="false" />
+          <Property Name="DisLike" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="tbl_Subject" Relationship="DB_MyWebModel.FK_tbl_Comments_tbl_Subject1" FromRole="tbl_Comments" ToRole="tbl_Subject" />
+        </EntityType>
+        <Association Name="FK_tbl_Comments_tbl_Subject1">
+          <End Type="DB_MyWebModel.tbl_Subject" Role="tbl_Subject" Multiplicity="1" />
+          <End Type="DB_MyWebModel.tbl_Comments" Role="tbl_Comments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Subject">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="tbl_Comments">
+              <PropertyRef Name="SubjectID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="tbl_ContactUs">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Text" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="tbl_Grouping">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="ParentID" Type="Int32" Nullable="false" />
+          <Property Name="Image" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="tbl_Grouping1" Relationship="DB_MyWebModel.FK_tbl_Grouping_tbl_Grouping" FromRole="tbl_Grouping" ToRole="tbl_Grouping1" />
+          <NavigationProperty Name="tbl_Grouping2" Relationship="DB_MyWebModel.FK_tbl_Grouping_tbl_Grouping" FromRole="tbl_Grouping1" ToRole="tbl_Grouping" />
+          <NavigationProperty Name="tbl_RelationshipGroup_Subject" Relationship="DB_MyWebModel.FK_tbl_RelationshipGroup_Subject_tbl_Grouping" FromRole="tbl_Grouping" ToRole="tbl_RelationshipGroup_Subject" />
+        </EntityType>
+        <EntityType Name="tbl_RelationshipGroup_Subject">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="GroupID" Type="Int32" Nullable="false" />
+          <Property Name="SubjectID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="tbl_Grouping" Relationship="DB_MyWebModel.FK_tbl_RelationshipGroup_Subject_tbl_Grouping" FromRole="tbl_RelationshipGroup_Subject" ToRole="tbl_Grouping" />
+          <NavigationProperty Name="tbl_Subject" Relationship="DB_MyWebModel.FK_tbl_RelationshipGroup_Subject_tbl_Subject1" FromRole="tbl_RelationshipGroup_Subject" ToRole="tbl_Subject" />
+        </EntityType>
+        <Association Name="FK_tbl_Grouping_tbl_Grouping">
+          <End Type="DB_MyWebModel.tbl_Grouping" Role="tbl_Grouping" Multiplicity="1" />
+          <End Type="DB_MyWebModel.tbl_Grouping" Role="tbl_Grouping1" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Grouping">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="tbl_Grouping1">
+              <PropertyRef Name="ParentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_RelationshipGroup_Subject_tbl_Grouping">
+          <End Type="DB_MyWebModel.tbl_Grouping" Role="tbl_Grouping" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="DB_MyWebModel.tbl_RelationshipGroup_Subject" Role="tbl_RelationshipGroup_Subject" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Grouping">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="tbl_RelationshipGroup_Subject">
+              <PropertyRef Name="GroupID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_RelationshipGroup_Subject_tbl_Subject1">
+          <End Type="DB_MyWebModel.tbl_Subject" Role="tbl_Subject" Multiplicity="1" />
+          <End Type="DB_MyWebModel.tbl_RelationshipGroup_Subject" Role="tbl_RelationshipGroup_Subject" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Subject">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="tbl_RelationshipGroup_Subject">
+              <PropertyRef Name="SubjectID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="DB_MyWebModelStoreContainer" CdmEntityContainer="DB_MyWebEntities">
+          <EntitySetMapping Name="tbl_Advertising">
+            <EntityTypeMapping TypeName="DB_MyWebModel.tbl_Advertising">
+              <MappingFragment StoreEntitySet="tbl_Advertising">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="Link" ColumnName="Link" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="DataStart" ColumnName="DataStart" />
+                <ScalarProperty Name="DataEnd" ColumnName="DataEnd" />
+                <ScalarProperty Name="Enable" ColumnName="Enable" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_Subject">
+            <EntityTypeMapping TypeName="DB_MyWebModel.tbl_Subject">
+              <MappingFragment StoreEntitySet="tbl_Subject">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="HeadTitle" ColumnName="HeadTitle" />
+                <ScalarProperty Name="Text" ColumnName="Text" />
+                <ScalarProperty Name="FullText" ColumnName="FullText" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="Video" ColumnName="Video" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="Visit" ColumnName="Visit" />
+                <ScalarProperty Name="Like" ColumnName="Like" />
+                <ScalarProperty Name="DisLike" ColumnName="DisLike" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_Users">
+            <EntityTypeMapping TypeName="DB_MyWebModel.tbl_Users">
+              <MappingFragment StoreEntitySet="tbl_Users">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Access" ColumnName="Access" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Family" ColumnName="Family" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="MeliCode" ColumnName="MeliCode" />
+                <ScalarProperty Name="MobilNumber" ColumnName="MobilNumber" />
+                <ScalarProperty Name="Enable" ColumnName="Enable" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_Setting">
+            <EntityTypeMapping TypeName="DB_MyWebModel.tbl_Setting">
+              <MappingFragment StoreEntitySet="tbl_Setting">
+                <ScalarProperty Name="CountPopular" ColumnName="CountPopular" />
+                <ScalarProperty Name="CountNewer" ColumnName="CountNewer" />
+                <ScalarProperty Name="CountOfMemo" ColumnName="CountOfMemo" />
+                <ScalarProperty Name="CountSubjectInPage" ColumnName="CountSubjectInPage" />
+                <ScalarProperty Name="MaxUploadSize" ColumnName="MaxUploadSize" />
+                <ScalarProperty Name="DisableComment" ColumnName="DisableComment" />
+                <ScalarProperty Name="ShowConfComm" ColumnName="ShowConfComm" />
+                <ScalarProperty Name="MetaTag" ColumnName="MetaTag" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_Comments">
+            <EntityTypeMapping TypeName="DB_MyWebModel.tbl_Comments">
+              <MappingFragment StoreEntitySet="tbl_Comments">
+                <ScalarProperty Name="DisLike" ColumnName="DisLike" />
+                <ScalarProperty Name="Like" ColumnName="Like" />
+                <ScalarProperty Name="Read" ColumnName="Read" />
+                <ScalarProperty Name="Confirm" ColumnName="Confirm" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="IP" ColumnName="IP" />
+                <ScalarProperty Name="Text" ColumnName="Text" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Family" ColumnName="Family" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="ParentID" ColumnName="ParentID" />
+                <ScalarProperty Name="SubjectID" ColumnName="SubjectID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_ContactUs">
+            <EntityTypeMapping TypeName="DB_MyWebModel.tbl_ContactUs">
+              <MappingFragment StoreEntitySet="tbl_ContactUs">
+                <ScalarProperty Name="Text" ColumnName="Text" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_Grouping">
+            <EntityTypeMapping TypeName="DB_MyWebModel.tbl_Grouping">
+              <MappingFragment StoreEntitySet="tbl_Grouping">
+                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="ParentID" ColumnName="ParentID" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_RelationshipGroup_Subject">
+            <EntityTypeMapping TypeName="DB_MyWebModel.tbl_RelationshipGroup_Subject">
+              <MappingFragment StoreEntitySet="tbl_RelationshipGroup&amp;Subject">
+                <ScalarProperty Name="SubjectID" ColumnName="SubjectID" />
+                <ScalarProperty Name="GroupID" ColumnName="GroupID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

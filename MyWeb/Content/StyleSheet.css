@@ -1,0 +1,443 @@
+﻿html, body {
+    margin: 0;
+    padding: 0;
+}
+
+a, p, span, div {
+    font-family: 'B Lotus';
+    font-weight: 600;
+    font-size: 17px;
+}
+
+
+h1, h2, h3, h4, h5, h6, h7 {
+    font-family: 'B Lotus';
+}
+
+a {
+    text-decoration: none;
+}
+
+    a:visited {
+        color: green;
+    }
+
+    a:active {
+        color: white;
+    }
+
+.homepage {
+    min-width: 1035px;
+    min-height: 800px;
+    height: 100%;
+    width: 100%;
+    background-color: #552713;
+}
+
+.logo {
+    width: 80%;
+    height: 170px;
+    margin: 0 0 0 10%;
+    text-align: center;
+    padding-top: 30px;
+}
+
+    .logo h1 {
+        color: white;
+    }
+
+    .logo h2 {
+        color: #f44513;
+    }
+
+
+.menu {
+    margin-left: 10%;
+    width: 80%;
+    background-color: #281208;
+    text-align: center;
+    height: 70px;
+    padding: 0;
+}
+
+.menu-menu {
+    width: 60%;
+    margin-left: 18%;
+}
+
+.menu li {
+    display: inline-block;
+    width: 17%;
+    height: 50px;
+    margin-top: 20px;
+    margin-left: 2%;
+}
+
+.BoxSearch {
+    float: left;
+    margin: 20px 35px 0 20px;
+    direction: rtl;
+}
+
+    .BoxSearch input, Button {
+        border-radius: 7px;
+        border: 1px solid;
+        padding: 4px;
+        opacity: 0.8;
+    }
+
+.menu a:hover {
+    color: white;
+}
+
+.menu a {
+    text-decoration: none;
+    color: #c94513;
+}
+
+.container {
+    margin: 0 0 0 10%;
+    width: 76%;
+    height: 100%;
+    background-color: white;
+    padding: 2%;
+    opacity: 10;
+}
+
+.main {
+    height: 100%;
+    width: 100%;
+}
+
+    .main img {
+        height: 100%;
+        width: 100%;
+    }
+
+.banner {
+    width: 100%;
+    height: 300px;
+}
+
+.rows {
+    margin-top: 1%;
+    height: 100%;
+}
+
+.right {
+    float: right;
+    height: 100%;
+    width: 28%;
+    margin-left: 2%;
+    text-align: right;
+    background-color: #eeeeee;
+}
+
+
+.Profile-menu {
+    height: 200px;
+    width: 96%;
+    margin: 2%;
+}
+
+    .Profile-menu img {
+        height: 120px;
+        width: 80px;
+        margin: 10px;
+    }
+
+.advertising {
+    height: 200px;
+    width: 96%;
+    margin: 2%;
+    border-radius: 10px;
+}
+
+    .advertising img {
+        border: 0.5px solid black;
+    }
+
+.subject-menu {
+    height: 200px;
+    width: 96%;
+    margin: 2%;
+}
+
+    .subject-menu li {
+        direction: rtl;
+        list-style: none;
+    }
+
+ul.list-panel li {
+    list-style: inside url(/Content/Images/li-1.jpg);
+}
+
+    ul.list-panel li:hover {
+        list-style: inside url(/Content/Images/li-2.jpg);
+    }
+
+
+.advertising div {
+    float: right;
+    margin: 1%;
+    height: 196px;
+    width: 48%;
+    background-color: greenyellow;
+    border-radius: 10px;
+}
+
+
+.divlist {
+    direction: rtl;
+    height: 100%;
+    width: 100%;
+}
+
+    .divlist h4 {
+        text-align: center;
+    }
+
+
+.list {
+    direction: rtl;
+}
+
+ul.list li {
+    list-style: inside url(/Content/Images/li-1.jpg);
+}
+
+    ul.list li:hover {
+        list-style: inside url(/Content/Images/li-2.jpg);
+    }
+
+.list a {
+    text-decoration: none;
+}
+
+.left {
+    min-height: 700px;
+    height: 100%;
+    width: 70%;
+    direction: rtl;
+}
+
+
+.container-left {
+    margin: 2% 0 3% 0;
+    height: 580px;
+    background-color: #eeeeee;
+}
+
+.container-left-text {
+    width: 95%;
+    height: 30%;
+    margin: 1% 2% 1% 2.3%;
+    text-align: right;
+    direction: rtl;
+    text-align: justify;
+    text-justify: inter-word;
+}
+
+.container-left-footer div {
+    float: right;
+    margin-right: 2.5%;
+    height: 30px;
+    width: 30%;
+    text-align: center;
+    background-color: #281208;
+    color: white;
+}
+
+    .container-left-footer div:hover {
+        background-color: black;
+        color: #c94513;
+    }
+
+.container-left-footer a {
+    color: white;
+}
+
+    .container-left-footer a:hover {
+        color: #c94513;
+    }
+
+
+
+.container-left img {
+    height: 300px;
+    width: 97.5%;
+    margin: 1% 1.25% 0 1.25%;
+}
+
+.container-left h2 {
+    text-align: center;
+}
+
+.container-left p {
+    margin: 10px;
+    text-align: right;
+    direction: rtl;
+    text-align: justify;
+    text-justify: inter-word;
+}
+
+
+.footer {
+    margin-top: 5%;
+    background-color: #281208;
+    width: 100%;
+    color: #94643c;
+    height: 55px;
+    direction: rtl;
+    text-align: center;
+    padding-top: 22px;
+}
+
+
+
+
+.TitleSubject {
+    height: 30px;
+    width: 98%;
+    text-align: center;
+    background-color: #0099FF;
+    border-radius: 5px;
+    margin: 0 1%;
+}
+
+.ImageSubject {
+    margin-top: 10px;
+    height: 300px;
+    width: 98%;
+    margin: 0 1%;
+}
+
+    .ImageSubject img {
+        height: 100%;
+        width: 100%;
+    }
+
+
+.FullTextSubject {
+    height: 100%;
+    width: 97%;
+    padding: 10px;
+    background-color: yellow;
+    direction: rtl;
+    text-align: justify;
+    text-justify: inter-word;
+}
+
+.BoxSubject {
+    height: 330px;
+    width: 100%;
+    margin-top: 10px;
+    background-color: burlywood;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    direction: rtl;
+}
+
+    .BoxSubject p {
+        margin-right: 10px;
+    }
+
+.linkdownload {
+    text-align: center;
+    height: 30px;
+    width: 75px;
+    background-color: deepskyblue;
+    border: 1px solid;
+    border-radius: 10px;
+}
+
+.DesBox {
+    height: 50px;
+    width: 100%;
+    padding-top: 18px;
+    text-align: center;
+    background-color: cornflowerblue;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.FullTextSubject-Footer {
+    margin-right: 82%;
+}
+
+
+tr.Like {
+    color: green;
+}
+
+.DisLike {
+    color: red;
+}
+
+
+.comment {
+    height: 100%;
+    width: 94.5%;
+    margin: 10px;
+    padding: 5px;
+    background-color: #60f535;
+    direction: rtl;
+    border-radius: 10px;
+    padding: 10px;
+    text-align: justify;
+    text-justify: inter-word;
+}
+
+
+.ReplyComment {
+    background-color: white;
+    direction: rtl;
+    border-radius: 10px;
+    padding: 10px;
+    height: 100%;
+    width: 85%;
+    margin-right: 10%;
+    margin-top: 2%;
+    margin-bottom: 1%;
+    text-align: justify;
+    text-justify: inter-word;
+}
+
+.btnReplayComment {
+    margin-right: 92%;
+    margin-top: 10px;
+    height: 32px;
+}
+
+.pagination li {
+    list-style: none;
+    margin: 5px;
+    display: inline-block;
+}
+
+.pagination a {
+    color: #f44513;
+}
+
+    .pagination a:hover {
+        font-weight: bold;
+        text-decoration: underline;
+    }
+
+.PageList {
+    text-align: center;
+    margin-right: 18%;
+    height: 40px;
+    width: 70%;
+}
+
+.container-subject-title {
+    height: 30px;
+    width: 100%;
+    background-color: #0099FF;
+    text-align: center;
+}
+
+    .container-subject-title a {
+        color: black;
+    }

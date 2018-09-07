@@ -1,0 +1,121 @@
+﻿@model MyWeb.Models.Domain.tbl_Setting
+
+@{
+    ViewBag.Title = "Settings";
+    Layout = "~/Views/Shared/_Admin.cshtml";
+}
+
+
+<div class="left">
+
+
+    <h2>تنظیمات</h2>
+    <div style="@ViewBag.Style">
+        @ViewBag.Message
+    </div>
+
+
+    @using (Html.BeginForm("Settings", "Admin", FormMethod.Post))
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            @Html.ValidationSummary(true)
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Title, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Title)
+                    @Html.ValidationMessageFor(model => model.Title)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Description, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Description)
+                    @Html.ValidationMessageFor(model => model.Description)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.MetaTag, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.MetaTag)
+                    @Html.ValidationMessageFor(model => model.MetaTag)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.ShowConfComm, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.ShowConfComm)
+                    @Html.ValidationMessageFor(model => model.ShowConfComm)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.DisableComment, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.DisableComment)
+                    @Html.ValidationMessageFor(model => model.DisableComment)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.MaxUploadSize, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.MaxUploadSize)
+                    @Html.ValidationMessageFor(model => model.MaxUploadSize)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.CountSubjectInPage, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.CountSubjectInPage)
+                    @Html.ValidationMessageFor(model => model.CountSubjectInPage)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.CountOfMemo, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.CountOfMemo)
+                    @Html.ValidationMessageFor(model => model.CountOfMemo)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.CountNewer, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.CountNewer)
+                    @Html.ValidationMessageFor(model => model.CountNewer)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.CountPopular, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.CountPopular)
+                    @Html.ValidationMessageFor(model => model.CountPopular)
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="ذخیره" class="btn btn-default" />
+                </div>
+            </div>
+        </div>
+    }
+
+    <div>
+        @Html.ActionLink("Back to List", "Index")
+    </div>
+
+</div>
+
+<script src="~/Scripts/jquery-2.1.4.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>

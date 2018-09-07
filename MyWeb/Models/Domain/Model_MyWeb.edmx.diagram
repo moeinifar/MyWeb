@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="aafa01cc6cf243efa5b074781a040ff2" Name="Diagram1">
+        <EntityTypeShape EntityType="DB_MyWebModel.tbl_Advertising" Width="1.5" PointX="0.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_MyWebModel.tbl_Subject" Width="1.5" PointX="3" PointY="2.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_MyWebModel.tbl_Users" Width="1.5" PointX="0.75" PointY="2.875" IsExpanded="true" />
+        <AssociationConnector Association="DB_MyWebModel.FK_tbl_Subject_tbl_Users1" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="DB_MyWebModel.tbl_Setting" Width="1.5" PointX="8.375" PointY="6.75" />
+        <EntityTypeShape EntityType="DB_MyWebModel.tbl_Comments" Width="1.5" PointX="5.25" PointY="2.75" />
+        <AssociationConnector Association="DB_MyWebModel.FK_tbl_Comments_tbl_Subject1" />
+        <EntityTypeShape EntityType="DB_MyWebModel.tbl_ContactUs" Width="1.5" PointX="7.375" PointY="0.75" />
+        <EntityTypeShape EntityType="DB_MyWebModel.tbl_Grouping" Width="1.5" PointX="9.375" PointY="1" />
+        <EntityTypeShape EntityType="DB_MyWebModel.tbl_RelationshipGroup_Subject" Width="1.5" PointX="11.625" PointY="2.875" />
+        <AssociationConnector Association="DB_MyWebModel.FK_tbl_Grouping_tbl_Grouping" />
+        <AssociationConnector Association="DB_MyWebModel.FK_tbl_RelationshipGroup_Subject_tbl_Grouping" />
+        <AssociationConnector Association="DB_MyWebModel.FK_tbl_RelationshipGroup_Subject_tbl_Subject1" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

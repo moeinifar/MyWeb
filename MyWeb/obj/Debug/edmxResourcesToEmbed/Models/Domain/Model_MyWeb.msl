@@ -1,0 +1,123 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="DB_MyWebModelStoreContainer" CdmEntityContainer="DB_MyWebEntities">
+    <EntitySetMapping Name="tbl_Advertising">
+      <EntityTypeMapping TypeName="DB_MyWebModel.tbl_Advertising">
+        <MappingFragment StoreEntitySet="tbl_Advertising">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Image" ColumnName="Image" />
+          <ScalarProperty Name="Link" ColumnName="Link" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="DataStart" ColumnName="DataStart" />
+          <ScalarProperty Name="DataEnd" ColumnName="DataEnd" />
+          <ScalarProperty Name="Enable" ColumnName="Enable" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_Subject">
+      <EntityTypeMapping TypeName="DB_MyWebModel.tbl_Subject">
+        <MappingFragment StoreEntitySet="tbl_Subject">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="HeadTitle" ColumnName="HeadTitle" />
+          <ScalarProperty Name="Text" ColumnName="Text" />
+          <ScalarProperty Name="FullText" ColumnName="FullText" />
+          <ScalarProperty Name="Image" ColumnName="Image" />
+          <ScalarProperty Name="Video" ColumnName="Video" />
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="Visit" ColumnName="Visit" />
+          <ScalarProperty Name="Like" ColumnName="Like" />
+          <ScalarProperty Name="DisLike" ColumnName="DisLike" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_Users">
+      <EntityTypeMapping TypeName="DB_MyWebModel.tbl_Users">
+        <MappingFragment StoreEntitySet="tbl_Users">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Access" ColumnName="Access" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Family" ColumnName="Family" />
+          <ScalarProperty Name="Image" ColumnName="Image" />
+          <ScalarProperty Name="MeliCode" ColumnName="MeliCode" />
+          <ScalarProperty Name="MobilNumber" ColumnName="MobilNumber" />
+          <ScalarProperty Name="Enable" ColumnName="Enable" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_Setting">
+      <EntityTypeMapping TypeName="DB_MyWebModel.tbl_Setting">
+        <MappingFragment StoreEntitySet="tbl_Setting">
+          <ScalarProperty Name="CountPopular" ColumnName="CountPopular" />
+          <ScalarProperty Name="CountNewer" ColumnName="CountNewer" />
+          <ScalarProperty Name="CountOfMemo" ColumnName="CountOfMemo" />
+          <ScalarProperty Name="CountSubjectInPage" ColumnName="CountSubjectInPage" />
+          <ScalarProperty Name="MaxUploadSize" ColumnName="MaxUploadSize" />
+          <ScalarProperty Name="DisableComment" ColumnName="DisableComment" />
+          <ScalarProperty Name="ShowConfComm" ColumnName="ShowConfComm" />
+          <ScalarProperty Name="MetaTag" ColumnName="MetaTag" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_Comments">
+      <EntityTypeMapping TypeName="DB_MyWebModel.tbl_Comments">
+        <MappingFragment StoreEntitySet="tbl_Comments">
+          <ScalarProperty Name="DisLike" ColumnName="DisLike" />
+          <ScalarProperty Name="Like" ColumnName="Like" />
+          <ScalarProperty Name="Read" ColumnName="Read" />
+          <ScalarProperty Name="Confirm" ColumnName="Confirm" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="IP" ColumnName="IP" />
+          <ScalarProperty Name="Text" ColumnName="Text" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Family" ColumnName="Family" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="ParentID" ColumnName="ParentID" />
+          <ScalarProperty Name="SubjectID" ColumnName="SubjectID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_ContactUs">
+      <EntityTypeMapping TypeName="DB_MyWebModel.tbl_ContactUs">
+        <MappingFragment StoreEntitySet="tbl_ContactUs">
+          <ScalarProperty Name="Text" ColumnName="Text" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_Grouping">
+      <EntityTypeMapping TypeName="DB_MyWebModel.tbl_Grouping">
+        <MappingFragment StoreEntitySet="tbl_Grouping">
+          <ScalarProperty Name="Image" ColumnName="Image" />
+          <ScalarProperty Name="ParentID" ColumnName="ParentID" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_RelationshipGroup_Subject">
+      <EntityTypeMapping TypeName="DB_MyWebModel.tbl_RelationshipGroup_Subject">
+        <MappingFragment StoreEntitySet="tbl_RelationshipGroup&amp;Subject">
+          <ScalarProperty Name="SubjectID" ColumnName="SubjectID" />
+          <ScalarProperty Name="GroupID" ColumnName="GroupID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

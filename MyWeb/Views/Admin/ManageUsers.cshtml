@@ -1,0 +1,100 @@
+﻿@model IEnumerable<MyWeb.Models.Domain.tbl_Users>
+
+@{
+    ViewBag.Title = "ManageUsers";
+    Layout = "~/Views/Shared/_Admin.cshtml";
+}
+
+<div class="left">
+
+
+    <h2>مدیریت کاربران</h2>
+
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Image)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.Username)
+            </th>
+            @*<th>
+                    @Html.DisplayNameFor(model => model.Password)
+                </th>*@
+            @*<th>
+                    @Html.DisplayNameFor(model => model.Email)
+                </th>*@
+            @*<th>
+                    @Html.DisplayNameFor(model => model.Description)
+                </th>*@
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Family)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MeliCode)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MobilNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Enable)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            string style = "";
+            if (item.Enable == false)
+            { style = "background-color:red;"; }
+            <tr style="@style">
+                <td>
+                    <img style="height:100px;width:75px;" src="~/Content/Images/Users/@item.Image" />
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Username)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Family)
+                </td>
+
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.MeliCode)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MobilNumber)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Enable)
+                </td>
+                <td>
+                    @{
+            if (item.Enable == false)
+            {
+                <span>@Html.ActionLink("فعال کردن", "EnableUser", new { id = item.ID }) |</span>
+            }
+            else
+            {
+                <span>@Html.ActionLink("غیرفعال کردن", "DisableUser", new { id = item.ID }) |</span>
+            }
+                    }
+
+                    @Html.ActionLink("مشخصات", "DetailsUser", new { id = item.ID }) |
+                    @Html.ActionLink("حذف", "DeleteUser", new { id = item.ID })
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>

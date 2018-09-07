@@ -1,0 +1,145 @@
+﻿@model MyWeb.Models.Domain.tbl_Comments
+
+@{
+    ViewBag.Title = "DetailsComment";
+    Layout = "~/Views/Shared/_Admin.cshtml";
+}
+@{
+    MyWeb.Models.Utility.ConvertDateToPersianCalendar ConvertDateToPersianCalendar = new MyWeb.Models.Utility.ConvertDateToPersianCalendar();
+}
+
+
+<div class="left">
+
+    <h2>جزئیات نظر</h2>
+
+    <div>
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.ParentID)
+            </dt>
+
+            <dd>
+                @{
+                    if (Model.ParentID == 0)
+                    {
+                        <span>این مورد نظر اصلی است</span>
+                    }
+                    else
+                    {
+                        MyWeb.Models.Domain.DB_MyWebEntities db = new MyWeb.Models.Domain.DB_MyWebEntities();
+                        var q = (from a in db.tbl_Comments
+                                 where a.ID.Equals(Model.ParentID)
+                                 select a).SingleOrDefault();
+                        <span>@q.Title</span>
+                    }
+                }
+                @Html.DisplayFor(model => model.ParentID)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Title)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Title)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Name)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Name)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Family)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Family)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Email)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Email)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Text)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Text)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.IP)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.IP)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Date)
+            </dt>
+
+            <dd>
+                @ConvertDateToPersianCalendar.ConvertToPersian(Model.Date).ToShortDateString()
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Confirm)
+            </dt>
+
+            <dd>
+                @{
+                    if (Model.Confirm == true)
+                    {
+                        <span>تایید شده</span>
+                    }
+                    else
+                    {
+                        <span>تایید نشده</span>
+                    }
+                }
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Like)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Like)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.DisLike)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.DisLike)
+            </dd>
+
+        </dl>
+    </div>
+    <p>
+        <div style="@ViewBag.Style">
+            @ViewBag.Message
+        </div>
+
+
+        @*@if (Model.Confirm != true)*@
+        {
+            <span>@Html.ActionLink("تایید", "ConfirmComment", new { id = Model.ID }) |</span>
+        }
+        @Html.ActionLink("حذف", "DeleteComment", new { id = Model.ID }) |
+        @Html.ActionLink("برگشت", "ManageComments", new { id = Model.SubjectID }) |
+
+    </p>
+</div>

@@ -1,0 +1,30 @@
+﻿@model MyWeb.Models.Domain.tbl_Comments
+
+@using (Html.BeginForm("InsertReplayComment", "Home", FormMethod.Get))
+{
+    <div style="@ViewBag.Style">
+        @ViewBag.Message
+    </div>
+
+    <input type="hidden" name="SubjectID" value="@Model.SubjectID" />
+    <input type="hidden" name="ParentID" value="@Model.ParentID" />
+    <table>
+        <tr>
+            <td>نام</td>
+            <td><input type="text" name="Name" value="" /></td>
+        </tr>
+        <tr>
+            <td>ایمیل</td>
+            <td><input type="email" name="Email" value="" /></td>
+        </tr>
+        <tr>
+            <td>نظر</td>
+            <td><textarea name="Text"></textarea></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><input type="submit" value="ارسال نظر" /></td>
+        </tr>
+    </table>
+}
+
